@@ -21,11 +21,10 @@ object frmTelaHeranca: TfrmTelaHeranca
     Height = 45
     Align = alBottom
     TabOrder = 0
-    ExplicitWidth = 759
     DesignSize = (
       792
       45)
-    object Novo: TBitBtn
+    object btnNovo: TBitBtn
       Left = 13
       Top = 6
       Width = 75
@@ -59,8 +58,9 @@ object frmTelaHeranca: TfrmTelaHeranca
         17BF6F17FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 0
+      OnClick = btnNovoClick
     end
-    object Alterar: TBitBtn
+    object btnAlterar: TBitBtn
       Left = 90
       Top = 6
       Width = 75
@@ -94,8 +94,9 @@ object frmTelaHeranca: TfrmTelaHeranca
         C30A0A9AFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FF4B4BAAFF00FFFF00FFFF00FF}
       TabOrder = 1
+      OnClick = btnAlterarClick
     end
-    object Cancelar: TBitBtn
+    object btnCancelar: TBitBtn
       Left = 167
       Top = 6
       Width = 75
@@ -129,8 +130,9 @@ object frmTelaHeranca: TfrmTelaHeranca
         3B6B3B3BFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 2
+      OnClick = btnCancelarClick
     end
-    object Salvar: TBitBtn
+    object btnSalvar: TBitBtn
       Left = 244
       Top = 6
       Width = 75
@@ -164,8 +166,9 @@ object frmTelaHeranca: TfrmTelaHeranca
         B46B3B3B6B3B3BFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 3
+      OnClick = btnSalvarClick
     end
-    object Excluir: TBitBtn
+    object btnExcluir: TBitBtn
       Left = 321
       Top = 6
       Width = 75
@@ -199,6 +202,7 @@ object frmTelaHeranca: TfrmTelaHeranca
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 4
+      OnClick = btnExcluirClick
     end
     object btnNavigator: TDBNavigator
       Left = 398
@@ -209,7 +213,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       TabOrder = 5
     end
-    object Sair: TBitBtn
+    object btnSair: TBitBtn
       Left = 713
       Top = 6
       Width = 75
@@ -244,7 +248,7 @@ object frmTelaHeranca: TfrmTelaHeranca
         D363C4D7244E6EFF00FFFF00FF244E6E244E6E244E6E244E6E244E6E244E6E24
         4E6E244E6E244E6E244E6E244E6E244E6E244E6E244E6EFF00FF}
       TabOrder = 6
-      OnClick = SairClick
+      OnClick = btnSairClick
     end
   end
   object pgcPrincipal: TPageControl
@@ -257,8 +261,6 @@ object frmTelaHeranca: TfrmTelaHeranca
     TabOrder = 1
     object tabListagem: TTabSheet
       Caption = 'Listagem'
-      ExplicitWidth = 751
-      ExplicitHeight = 324
       object pnlTopo: TPanel
         Left = 0
         Top = 0
@@ -331,6 +333,33 @@ object frmTelaHeranca: TfrmTelaHeranca
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'idPessoa'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'cpf'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'rg'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'data_nascimento'
+            Width = 145
+            Visible = True
+          end>
       end
     end
     object tabManutencao: TTabSheet
@@ -339,9 +368,46 @@ object frmTelaHeranca: TfrmTelaHeranca
     end
   end
   object QryListagem: TZQuery
+    Connection = dtmPrincipal.ConexaoDB
+    SQL.Strings = (
+      'SELECT idPessoa, '
+      #9#9'nome, '
+      #9#9'cpf, '
+      #9#9'rg, '
+      #9#9'data_nascimento '
+      #9'FROM PESSOA')
     Params = <>
     Left = 572
     Top = 32
+    object QryListagemidPessoa: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      DisplayWidth = 10
+      FieldName = 'idPessoa'
+      ReadOnly = True
+    end
+    object QryListagemnome: TWideStringField
+      DisplayLabel = 'Nome'
+      DisplayWidth = 51
+      FieldName = 'nome'
+      Size = 60
+    end
+    object QryListagemcpf: TWideStringField
+      DisplayLabel = 'CPF'
+      DisplayWidth = 20
+      FieldName = 'cpf'
+      Size = 14
+    end
+    object QryListagemrg: TWideStringField
+      DisplayLabel = 'RG'
+      DisplayWidth = 19
+      FieldName = 'rg'
+      Size = 12
+    end
+    object QryListagemdata_nascimento: TWideStringField
+      DisplayLabel = 'Data de Nascimento'
+      DisplayWidth = 22
+      FieldName = 'data_nascimento'
+    end
   end
   object dtsListagem: TDataSource
     DataSet = QryListagem

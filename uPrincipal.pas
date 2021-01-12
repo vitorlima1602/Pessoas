@@ -10,7 +10,9 @@ type
   TfrmPrincipal = class(TForm)
     menuPrincipal: TMainMenu;
     CadastrodePessoa1: TMenuItem;
+    Pessoa1: TMenuItem;
     procedure FormCreate(Sender: TObject);
+    procedure Pessoa1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,6 +26,8 @@ implementation
 
 {$R *.dfm}
 
+uses uCadPessoa;
+
 //Estrutura de conexão com o banco de dados ao iniciar aplicação
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
@@ -34,14 +38,21 @@ begin
     LibraryLocation := 'C:\Delphi\Pessoas\ntwdblib.dll';
     HostName := '.\SQLEXPRESS';
     Port := 1433;
-    User := 'userAppDelphi';
+    User := 'vl';
     Password := 'server2019';
-    Database := 'Cadastro_Pessoas';
+    Database := 'Teste';
     Connected := True;
 
 
   end;
 
+end;
+
+procedure TfrmPrincipal.Pessoa1Click(Sender: TObject);
+begin
+  frmCadPessoa := TfrmCadPessoa.Create(Self);
+  frmCadPessoa.ShowModal;
+  frmCadPessoa.Release;
 end;
 
 end.

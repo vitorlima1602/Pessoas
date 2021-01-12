@@ -6,12 +6,13 @@ object dtmPrincipal: TdtmPrincipal
     ControlsCodePage = cCP_UTF16
     AutoEncodeStrings = True
     Catalog = ''
-    HostName = ''
+    HostName = '.\SQLEXPRESS'
     Port = 0
-    Database = ''
-    User = ''
-    Password = ''
-    Protocol = ''
+    Database = 'Teste'
+    User = 'vl'
+    Password = 'server2019'
+    Protocol = 'mssql'
+    LibraryLocation = 'C:\Delphi\Pessoas\ntwdblib.dll'
     Left = 112
     Top = 48
   end

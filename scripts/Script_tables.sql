@@ -17,6 +17,7 @@ GO
 CREATE TABLE ENDERECO(
 	idEndereco int IDENTITY PRIMARY KEY  NOT NULL,
 	logradouro varchar(60),
+	numero int,
 	cep varchar(10),
 	bairro varchar(50),
 	cidade varchar(60),

@@ -19,7 +19,11 @@ object frmPrincipal: TfrmPrincipal
     Left = 592
     Top = 8
     object CadastrodePessoa1: TMenuItem
-      Caption = 'Cadastro de Pessoa'
+      Caption = 'Cadastro'
+      object Pessoa1: TMenuItem
+        Caption = 'Pessoa'
+        OnClick = Pessoa1Click
+      end
     end
   end
 end
