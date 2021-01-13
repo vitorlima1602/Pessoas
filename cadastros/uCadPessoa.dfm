@@ -26,12 +26,9 @@ inherited frmCadPessoa: TfrmCadPessoa
   inherited pgcPrincipal: TPageControl
     Width = 1025
     Height = 343
-    ActivePage = tabManutencao
     ExplicitWidth = 1025
     ExplicitHeight = 343
     inherited tabListagem: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 1017
       ExplicitHeight = 315
       inherited pnlTopo: TPanel
@@ -45,53 +42,57 @@ inherited frmCadPessoa: TfrmCadPessoa
           item
             Expanded = False
             FieldName = 'idPessoa'
+            Width = 61
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'nome'
-            Width = 199
+            Width = 206
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'telefone'
+            Width = 82
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'data_nascimento'
-            Width = 108
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'logradouro'
-            Width = 210
+            Width = 172
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'numero'
-            Width = 52
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'cep'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'cidade'
-            Width = 266
+            Width = 209
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'uf'
+            Width = 20
             Visible = True
           end>
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 1017
       ExplicitHeight = 315
       object Label2: TLabel
@@ -193,7 +194,6 @@ inherited frmCadPessoa: TfrmCadPessoa
         NumGlyphs = 2
         CalendarStyle = csDialog
         TabOrder = 5
-        OnChange = edtDataNascimentoChange
       end
       object edtLogradouro: TLabeledEdit
         Tag = 2
@@ -269,6 +269,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     end
   end
   inherited QryListagem: TZQuery
+    Active = True
     SQL.Strings = (
       'SELECT idPessoa,'
       '       nome,'
@@ -282,15 +283,37 @@ inherited frmCadPessoa: TfrmCadPessoa
       '       bairro,'
       '       cidade,'
       '       uf'
-      '  FROM PESSOA'
-      ''
-      '             ')
+      '  FROM PESSOA')
     Left = 816
     Top = 40
-    object QryListagemtelefone: TWideStringField [2]
+    object QryListagemidPessoa: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'idPessoa'
+      ReadOnly = True
+    end
+    object QryListagemnome: TWideStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+      Size = 60
+    end
+    object QryListagemtelefone: TWideStringField
       DisplayLabel = 'Telefone'
       FieldName = 'telefone'
       Size = 12
+    end
+    object QryListagemcpf: TWideStringField
+      DisplayLabel = 'CPF'
+      FieldName = 'cpf'
+      Size = 14
+    end
+    object QryListagemrg: TWideStringField
+      DisplayLabel = 'RG'
+      FieldName = 'rg'
+      Size = 12
+    end
+    object QryListagemdata_nascimento: TDateTimeField
+      DisplayLabel = 'Data de Nascimento'
+      FieldName = 'data_nascimento'
     end
     object QryListagemlogradouro: TWideStringField
       DisplayLabel = 'Logradouro'

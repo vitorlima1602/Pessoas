@@ -358,35 +358,6 @@ object frmTelaHeranca: TfrmTelaHeranca
     Params = <>
     Left = 572
     Top = 32
-    object QryListagemidPessoa: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      DisplayWidth = 10
-      FieldName = 'idPessoa'
-      ReadOnly = True
-    end
-    object QryListagemnome: TWideStringField
-      DisplayLabel = 'Nome'
-      DisplayWidth = 51
-      FieldName = 'nome'
-      Size = 60
-    end
-    object QryListagemcpf: TWideStringField
-      DisplayLabel = 'CPF'
-      DisplayWidth = 20
-      FieldName = 'cpf'
-      Size = 14
-    end
-    object QryListagemrg: TWideStringField
-      DisplayLabel = 'RG'
-      DisplayWidth = 19
-      FieldName = 'rg'
-      Size = 12
-    end
-    object QryListagemdata_nascimento: TWideStringField
-      DisplayLabel = 'Data de Nascimento'
-      DisplayWidth = 22
-      FieldName = 'data_nascimento'
-    end
   end
   object dtsListagem: TDataSource
     DataSet = QryListagem

@@ -6,10 +6,9 @@ object dtmPrincipal: TdtmPrincipal
     ControlsCodePage = cCP_UTF16
     AutoEncodeStrings = True
     Catalog = ''
-    Connected = True
     HostName = '.\SQLEXPRESS'
     Port = 0
-    Database = 'Teste'
+    Database = 'newDataBase'
     User = 'vl'
     Password = 'server2019'
     Protocol = 'mssql'

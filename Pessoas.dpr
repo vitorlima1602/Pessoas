@@ -15,8 +15,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TdtmPrincipal, dtmPrincipal);
-  Application.CreateForm(TfrmTelaHeranca, frmTelaHeranca);
-  Application.CreateForm(TfrmCadPessoa, frmCadPessoa);
   Application.Run;
 end.

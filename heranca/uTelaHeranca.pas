@@ -28,11 +28,6 @@ type
     lblIndice: TLabel;
     QryListagem: TZQuery;
     dtsListagem: TDataSource;
-    QryListagemnome: TWideStringField;
-    QryListagemcpf: TWideStringField;
-    QryListagemrg: TWideStringField;
-    QryListagemdata_nascimento: TWideStringField;
-    QryListagemidPessoa: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);

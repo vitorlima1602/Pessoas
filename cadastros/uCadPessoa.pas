@@ -27,19 +27,23 @@ type
     edtCidade: TLabeledEdit;
     edtNumero: TLabeledEdit;
     edtDataNascimento: TDateEdit;
+    edtUf: TLabeledEdit;
+    QryListagemidPessoa: TIntegerField;
+    QryListagemnome: TWideStringField;
     QryListagemtelefone: TWideStringField;
+    QryListagemcpf: TWideStringField;
+    QryListagemrg: TWideStringField;
+    QryListagemdata_nascimento: TDateTimeField;
     QryListagemlogradouro: TWideStringField;
     QryListagemnumero: TIntegerField;
     QryListagemcep: TWideStringField;
     QryListagembairro: TWideStringField;
     QryListagemcidade: TWideStringField;
     QryListagemuf: TWideStringField;
-    edtUf: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnNovoClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
-    procedure edtDataNascimentoChange(Sender: TObject);
   private
     { Private declarations }
     oPessoa : TPessoa;
