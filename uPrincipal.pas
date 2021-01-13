@@ -4,13 +4,16 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, uDTMConexao;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, uDTMConexao, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls;
 
 type
   TfrmPrincipal = class(TForm)
     menuPrincipal: TMainMenu;
     CadastrodePessoa1: TMenuItem;
     Pessoa1: TMenuItem;
+    imgPrincipal: TImage;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Pessoa1Click(Sender: TObject);
   private
@@ -42,10 +45,7 @@ begin
     Password := 'server2019';
     Database := 'Teste';
     Connected := True;
-
-
   end;
-
 end;
 
 procedure TfrmPrincipal.Pessoa1Click(Sender: TObject);

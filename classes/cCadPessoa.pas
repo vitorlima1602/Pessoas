@@ -2,6 +2,7 @@ unit cCadPessoa;
 
 interface
 
+//Lista de Units utilizadas
 uses System.Classes,
      Vcl.Controls,
      Vcl.ExtCtrls,
@@ -14,10 +15,12 @@ uses System.Classes,
      System.SysUtils;
 
 type
+  //Declaração do tipo da Classe
   TPessoa = class
 
-  //Definindo o tipo das propriedades
   private
+  //Variáveis privadas que são utilizadas somente dentro da classe
+  //Definindo o tipo das propriedades
     ConexaoDB : TZConnection;
     F_idPessoa : Integer;
     F_nome : String;
@@ -32,17 +35,19 @@ type
     F_cidade : String;
     F_uf : String;
 
-  // Definição dos métodos Constructor e Destructor e funções para CRUD
   public
+  //Variáveis públicas que podem ser trabalhadas fora da classe
+  // Definição dos métodos Constructor e Destructor e funções para CRUD
     constructor Create (aConexao : TZConnection);
-    destructor Destroy;
+    destructor Destroy; override; //Sobrescrita de método
     function Inserir : Boolean;
     function Atualizar : Boolean;
     function Excluir : Boolean;
     function Selecionar(id : Integer) : Boolean;
 
-  // Definição de propriedades de escrita e leitura
   published
+  //Variáveis públicas utilizadas para propriedades da classe
+  // Definição de propriedades de escrita e leitura
     property codigo          : Integer     read F_idPessoa          write F_idPessoa;
     property nome            : String      read F_nome              write F_nome;
     property telefone        : String      read F_telefone          write F_telefone;
@@ -61,11 +66,14 @@ type
 implementation
 
 {$region 'Constructor e Destructor'}
+
+//Construtor da Classe
 constructor TPessoa.Create(aConexao : TZConnection);
 begin
   ConexaoDB := aConexao;
 end;
 
+//Destroi a Classe
 destructor TPessoa.Destroy;
 begin
   inherited;
@@ -203,7 +211,7 @@ begin
                   '                    :telefone, ' +
                   '                    :cpf, ' +
                   '                    :rg, ' +
-                  '                    :data_nascimento' +
+                  '                    :data_nascimento, ' +
                   '                    :logradouro, ' +
                   '                    :numero, ' +
                   '                    :cep, ' +

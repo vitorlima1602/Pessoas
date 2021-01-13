@@ -11,7 +11,9 @@ object frmTelaHeranca: TfrmTelaHeranca
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlRodape: TPanel
@@ -268,7 +270,7 @@ object frmTelaHeranca: TfrmTelaHeranca
         Height = 73
         Align = alTop
         TabOrder = 0
-        object lblPesquisar: TLabel
+        object lblIndice: TLabel
           Left = 9
           Top = 16
           Width = 93
@@ -283,6 +285,7 @@ object frmTelaHeranca: TfrmTelaHeranca
           TabOrder = 0
           Text = ''
           TextHint = 'Digite sua pesquisa'
+          OnChange = mskPesquisarChange
         end
         object btnPesquisar: TBitBtn
           Left = 223
@@ -320,46 +323,22 @@ object frmTelaHeranca: TfrmTelaHeranca
           TabOrder = 1
         end
       end
-      object grdPrincipal: TDBGrid
+      object grdListagem: TDBGrid
         Left = 0
         Top = 73
         Width = 784
         Height = 267
         Align = alClient
         DataSource = dtsListagem
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'idPessoa'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'nome'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'cpf'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'rg'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'data_nascimento'
-            Width = 145
-            Visible = True
-          end>
+        OnDblClick = grdListagemDblClick
+        OnTitleClick = grdListagemTitleClick
       end
     end
     object tabManutencao: TTabSheet

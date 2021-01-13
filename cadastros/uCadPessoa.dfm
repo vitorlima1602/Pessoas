@@ -10,7 +10,7 @@ inherited frmCadPessoa: TfrmCadPessoa
     Top = 343
     Width = 1025
     ExplicitTop = 343
-    ExplicitWidth = 946
+    ExplicitWidth = 1025
     inherited btnNavigator: TDBNavigator
       Left = 399
       Width = 136
@@ -20,22 +20,25 @@ inherited frmCadPessoa: TfrmCadPessoa
     end
     inherited btnSair: TBitBtn
       Left = 946
-      ExplicitLeft = 867
+      ExplicitLeft = 946
     end
   end
   inherited pgcPrincipal: TPageControl
     Width = 1025
     Height = 343
-    ExplicitWidth = 946
+    ActivePage = tabManutencao
+    ExplicitWidth = 1025
     ExplicitHeight = 343
     inherited tabListagem: TTabSheet
-      ExplicitWidth = 938
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 1017
       ExplicitHeight = 315
       inherited pnlTopo: TPanel
         Width = 1017
-        ExplicitWidth = 938
+        ExplicitWidth = 1017
       end
-      inherited grdPrincipal: TDBGrid
+      inherited grdListagem: TDBGrid
         Width = 1017
         Height = 242
         Columns = <
@@ -47,54 +50,49 @@ inherited frmCadPessoa: TfrmCadPessoa
           item
             Expanded = False
             FieldName = 'nome'
-            Width = 196
+            Width = 199
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'telefone'
-            Width = 82
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'data_nascimento'
-            Width = 101
+            Width = 108
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'logradouro'
-            Width = 209
+            Width = 210
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'numero'
-            Width = 46
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'cep'
+            Width = 52
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'cidade'
-            Width = 204
+            Width = 266
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'uf'
-            Width = 23
             Visible = True
           end>
       end
     end
     inherited tabManutencao: TTabSheet
-      ExplicitWidth = 938
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 1017
       ExplicitHeight = 315
       object Label2: TLabel
         Left = 13
@@ -132,6 +130,7 @@ inherited frmCadPessoa: TfrmCadPessoa
         Caption = 'CEP'
       end
       object edtIdPessoa: TLabeledEdit
+        Tag = 1
         Left = 10
         Top = 32
         Width = 121
@@ -161,17 +160,18 @@ inherited frmCadPessoa: TfrmCadPessoa
         Height = 21
         EditMask = '999.999.999-99;1;_'
         MaxLength = 14
-        TabOrder = 2
+        TabOrder = 3
         Text = '   .   .   -  '
       end
       object mskRg: TMaskEdit
+        Tag = 2
         Left = 157
         Top = 174
         Width = 132
         Height = 21
         EditMask = '99.999.999-9;1;_'
         MaxLength = 12
-        TabOrder = 3
+        TabOrder = 4
         Text = '  .   .   - '
       end
       object mskTelefone: TMaskEdit
@@ -181,18 +181,22 @@ inherited frmCadPessoa: TfrmCadPessoa
         Height = 21
         EditMask = '(99) 9999-9999;1;_'
         MaxLength = 14
-        TabOrder = 4
+        TabOrder = 2
         Text = '(  )     -    '
       end
-      object DateEdit1: TDateEdit
+      object edtDataNascimento: TDateEdit
+        Tag = 2
         Left = 292
         Top = 174
         Width = 149
         Height = 21
         NumGlyphs = 2
+        CalendarStyle = csDialog
         TabOrder = 5
+        OnChange = edtDataNascimentoChange
       end
       object edtLogradouro: TLabeledEdit
+        Tag = 2
         Left = 13
         Top = 225
         Width = 428
@@ -204,16 +208,18 @@ inherited frmCadPessoa: TfrmCadPessoa
         TabOrder = 6
       end
       object mskCep: TMaskEdit
+        Tag = 2
         Left = 574
         Top = 225
         Width = 155
         Height = 21
         EditMask = '99.999-999;1;_'
         MaxLength = 10
-        TabOrder = 7
+        TabOrder = 8
         Text = '  .   -   '
       end
       object edtBairro: TLabeledEdit
+        Tag = 2
         Left = 13
         Top = 270
         Width = 428
@@ -222,9 +228,10 @@ inherited frmCadPessoa: TfrmCadPessoa
         EditLabel.Height = 13
         EditLabel.Caption = 'Bairro'
         MaxLength = 50
-        TabOrder = 8
+        TabOrder = 9
       end
       object edtCidade: TLabeledEdit
+        Tag = 2
         Left = 447
         Top = 270
         Width = 247
@@ -233,9 +240,10 @@ inherited frmCadPessoa: TfrmCadPessoa
         EditLabel.Height = 13
         EditLabel.Caption = 'Cidade'
         MaxLength = 60
-        TabOrder = 9
+        TabOrder = 10
       end
       object edtNumero: TLabeledEdit
+        Tag = 2
         Left = 447
         Top = 225
         Width = 121
@@ -244,9 +252,10 @@ inherited frmCadPessoa: TfrmCadPessoa
         EditLabel.Height = 13
         EditLabel.Caption = 'N'#250'mero'
         MaxLength = 6
-        TabOrder = 10
+        TabOrder = 7
       end
       object edtUf: TLabeledEdit
+        Tag = 2
         Left = 700
         Top = 270
         Width = 29
@@ -261,10 +270,21 @@ inherited frmCadPessoa: TfrmCadPessoa
   end
   inherited QryListagem: TZQuery
     SQL.Strings = (
-      
-        'SELECT idPessoa, nome, telefone, cpf, rg, data_nascimento, logra' +
-        'douro, numero, cep, bairro, cidade, uf'
-      #9'FROM PESSOA')
+      'SELECT idPessoa,'
+      '       nome,'
+      '       telefone,'
+      '       cpf,'
+      '       rg,'
+      '       data_nascimento,'
+      '       logradouro,'
+      '       numero,'
+      '       cep,'
+      '       bairro,'
+      '       cidade,'
+      '       uf'
+      '  FROM PESSOA'
+      ''
+      '             ')
     Left = 816
     Top = 40
     object QryListagemtelefone: TWideStringField [2]
